@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 
 const CountriesList = (props) => {
     return (
@@ -9,7 +10,7 @@ const CountriesList = (props) => {
             <div className="list-group">
             {props.Countries.map((element,index)=>
                 <div key={index}>
-                <Link to={element.alpha3Code} className="list-group-item list-group-item-action">{element.alpha3Code} {element.name.common}</Link>
+                <Link to={element.alpha3Code} state={{element}}className="list-group-item list-group-item-action">{element.alpha3Code} {element.name.common}</Link>
                 </div>
                 
             )}
@@ -17,6 +18,7 @@ const CountriesList = (props) => {
             </div>
             </div>
             </div>
+            <Outlet/>
         </>
     )
 }
